@@ -32,7 +32,7 @@ export default function ServiceCard({
 		if (ref.current) {
 			ref.current.style.opacity = '0'
 			ref.current.style.transform = 'translateY(30px)'
-			ref.current.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`
+			ref.current.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`
 			observer.observe(ref.current)
 		}
 		return () => {
