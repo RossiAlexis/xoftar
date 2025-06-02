@@ -142,6 +142,124 @@ export function Welcome() {
 					</div>
 				</div>
 			</section>
+			<section className="bg-[#1e293b] px-0 py-32" id="contacto">
+				<div className="mx-auto max-w-7xl px-8">
+					<div className="mb-16 text-center">
+						<h2 className="mb-4 text-5xl font-bold">
+							¿Listo para comenzar tu <Gradient>proyecto</Gradient>?
+						</h2>
+						<p className="mw-[600px] mx-auto text-xl text-[#94a3b8]">
+							Contáctanos y conversemos sobre cómo podemos ayudarte a
+							materializar tus ideas
+						</p>
+					</div>
+					<div className="grid grid-cols-1 gap-16 sm:grid-cols-2">
+						<div className="rounded-[20px] border-[#6366f133] bg-[#0f172a] p-12">
+							<form id="contactForm">
+								<div className="mb-8">
+									<label
+										className="mb-2 block font-medium text-[#f8fafc]"
+										htmlFor="name"
+									>
+										Nombre completo
+									</label>
+									<input
+										className="w-full rounded-xl border border-[#6366f14d] p-4 text-lg text-[#f8fafc] transition-colors duration-300 ease-in focus:border-[#6366f1] focus:outline-none"
+										type="text"
+										id="name"
+										name="name"
+										required
+									/>
+								</div>
+								<div className="mb-8">
+									<label
+										className="mb-2 block font-medium text-[#f8fafc]"
+										htmlFor="email"
+									>
+										Email
+									</label>
+									<input
+										className="w-full rounded-xl border border-[#6366f14d] p-4 text-lg text-[#f8fafc] transition-colors duration-300 ease-in focus:border-[#6366f1] focus:outline-none"
+										type="email"
+										id="email"
+										name="email"
+										required
+									/>
+								</div>
+								<div className="mb-8">
+									<label
+										className="mb-2 block font-medium text-[#f8fafc]"
+										htmlFor="company"
+									>
+										Empresa
+									</label>
+									<input type="text" id="company" name="company" />
+								</div>
+								<div className="mb-8">
+									<label
+										className="mb-2 block font-medium text-[#f8fafc]"
+										htmlFor="message"
+									>
+										Cuéntanos sobre tu proyecto
+									</label>
+									<textarea
+										className="w-full rounded-xl border border-[#6366f14d] p-4 text-lg text-[#f8fafc] transition-colors duration-300 ease-in focus:border-[#6366f1] focus:outline-none"
+										id="message"
+										name="message"
+										rows={5}
+										required
+									></textarea>
+								</div>
+								<button
+									type="submit"
+									className="w-full cursor-pointer rounded-xl border-none bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4] p-4 text-lg font-semibold text-white transition-all duration-300 ease-in"
+								>
+									Enviar mensaje
+								</button>
+							</form>
+						</div>
+						<div>
+							<h3 className="mb-8 text-3xl">Hablemos</h3>
+							<div className="mb-6 flex items-center rounded-xl bg-[#0f172a] p-4">
+								<div className="mr-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4]">
+									📧
+								</div>
+								<div>
+									<h4 className="font-bold">Email</h4>
+									<p>contacto@xoftar.com</p>
+								</div>
+							</div>
+							<div className="mb-6 flex items-center rounded-xl bg-[#0f172a] p-4">
+								<div className="mr-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4]">
+									📱
+								</div>
+								<div>
+									<h4 className="font-bold">WhatsApp</h4>
+									<p>+54 9 11 XXXX-XXXX</p>
+								</div>
+							</div>
+							<div className="mb-6 flex items-center rounded-xl bg-[#0f172a] p-4">
+								<div className="mr-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4]">
+									💼
+								</div>
+								<div>
+									<h4 className="font-bold">LinkedIn</h4>
+									<p>linkedin.com/company/xoftar</p>
+								</div>
+							</div>
+							<div className="mb-6 flex items-center rounded-xl bg-[#0f172a] p-4">
+								<div className="mr-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4]">
+									🌐
+								</div>
+								<div>
+									<h4 className="font-bold">Ubicación</h4>
+									<p>Buenos Aires, Argentina</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 	)
 }
