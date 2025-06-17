@@ -1,6 +1,11 @@
+import { useFetcher } from 'react-router'
 import Gradient from '../gradient'
 
 export default function ContactUsSection() {
+	const fetcher = useFetcher()
+	const isSubmitting = fetcher.state === 'submitting'
+	const isSuccess = fetcher.data?.status === 'success'
+
 	return (
 		<section className="bg-[#1e293b] px-0 py-32" id="contacto">
 			<div className="mx-auto max-w-7xl px-8">
@@ -15,7 +20,19 @@ export default function ContactUsSection() {
 				</div>
 				<div className="grid grid-cols-1 gap-16 sm:grid-cols-2">
 					<div className="rounded-[20px] border-[#6366f133] bg-[#0f172a] p-12">
-						<form id="contactForm">
+						<fetcher.Form method="post">
+							{isSuccess && (
+								<div className="mb-6 rounded-xl border border-green-500/30 bg-green-500/20 p-4 text-green-300">
+									¡Mensaje enviado exitosamente! Te contactaremos pronto.
+								</div>
+							)}
+
+							{fetcher.data?.error && (
+								<div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/20 p-4 text-red-300">
+									{fetcher.data.error}
+								</div>
+							)}
+
 							<div className="mb-8">
 								<label
 									className="mb-2 block font-medium text-[#f8fafc]"
@@ -29,6 +46,7 @@ export default function ContactUsSection() {
 									id="name"
 									name="name"
 									required
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div className="mb-8">
@@ -44,6 +62,7 @@ export default function ContactUsSection() {
 									id="email"
 									name="email"
 									required
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div className="mb-8">
@@ -58,6 +77,7 @@ export default function ContactUsSection() {
 									id="company"
 									name="company"
 									className="w-full rounded-xl border border-[#6366f14d] p-4 text-lg text-[#f8fafc] transition-colors duration-300 ease-in focus:border-[#6366f1] focus:outline-none"
+									disabled={isSubmitting}
 								/>
 							</div>
 							<div className="mb-8">
@@ -73,15 +93,17 @@ export default function ContactUsSection() {
 									name="message"
 									rows={5}
 									required
+									disabled={isSubmitting}
 								></textarea>
 							</div>
 							<button
 								type="submit"
-								className="w-full cursor-pointer rounded-xl border-none bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4] p-4 text-lg font-semibold text-white transition-all duration-300 ease-in"
+								disabled={isSubmitting}
+								className="w-full cursor-pointer rounded-xl border-none bg-gradient-to-br from-[#6366f1] via-[#8b5cf6] to-[#06b6d4] p-4 text-lg font-semibold text-white transition-all duration-300 ease-in disabled:cursor-not-allowed disabled:opacity-50"
 							>
-								Enviar mensaje
+								{isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
 							</button>
-						</form>
+						</fetcher.Form>
 					</div>
 					<div>
 						<h3 className="mb-8 text-3xl">Hablemos</h3>

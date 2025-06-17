@@ -58,7 +58,68 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export async function action({ request }: Route.ActionArgs) {
-	console.log('Action called')
+	try {
+		const formData = await request.formData()
+
+		// Extract form fields
+		const name = formData.get('name')?.toString()
+		const email = formData.get('email')?.toString()
+		const company = formData.get('company')?.toString()
+		const message = formData.get('message')?.toString()
+
+		// Validate required fields
+		if (!name?.trim()) {
+			return data({ error: 'El nombre es requerido' }, { status: 400 })
+		}
+
+		if (!email?.trim()) {
+			return data({ error: 'El email es requerido' }, { status: 400 })
+		}
+
+		if (!message?.trim()) {
+			return data({ error: 'El mensaje es requerido' }, { status: 400 })
+		}
+
+		// Basic email validation
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		if (!emailRegex.test(email)) {
+			return data(
+				{ error: 'Por favor ingresa un email válido' },
+				{ status: 400 },
+			)
+		}
+
+		// Here you would typically:
+		// 1. Send an email notification
+		// 2. Save to database
+		// 3. Send to a CRM system
+		// etc.
+
+		console.log('Contact form submission:', {
+			name: name.trim(),
+			email: email.trim(),
+			company: company?.trim() || 'No especificada',
+			message: message.trim(),
+			timestamp: new Date().toISOString(),
+		})
+
+		// For now, we'll just log and return success
+		// TODO: Implement actual email sending or database storage
+
+		return data(
+			{
+				status: 'success',
+				message: 'Mensaje enviado exitosamente',
+			},
+			{ status: 200 },
+		)
+	} catch (error) {
+		console.error('Error processing contact form:', error)
+		return data(
+			{ error: 'Ha ocurrido un error. Por favor intenta nuevamente.' },
+			{ status: 500 },
+		)
+	}
 }
 
 export default function Home({ loaderData }: Route.ComponentProps) {
