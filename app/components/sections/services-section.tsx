@@ -13,9 +13,9 @@ export default function ServicesSection({ services }: ServiceProps) {
 		<section id="servicios" className="w-full bg-[#1e293b] px-8 py-32">
 			<div className="mx-auto max-w-7xl">
 				<SectionHeader
-					title="Nuestros"
-					highlightedText="Servicios"
-					description="Ofrecemos soluciones tecnológicas completas para llevar tu negocio al siguiente nivel"
+					title="Soluciones"
+					highlightedText="Tecnológicas"
+					description="Servicios especializados que generan resultados medibles y ROI comprobado para tu empresa"
 				/>
 
 				<div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-[repeat(auto-fit,minmax(21rem,1fr))]">

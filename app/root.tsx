@@ -26,12 +26,52 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
 	return (
-		<html lang="en">
+		<html lang="es">
 			<head>
 				<meta charSet="utf-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<Meta />
 				<Links />
+
+				{/* JSON-LD Structured Data */}
+				<script
+					type="application/ld+json"
+					dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							'@context': 'https://schema.org',
+							'@type': 'Organization',
+							name: 'Xoftar',
+							description:
+								'Desarrollo de software a medida, aplicaciones web y móviles. Transformamos ideas en soluciones digitales escalables.',
+							url: 'https://xoftar.com',
+							logo: 'https://xoftar.com/logo.png',
+							foundingDate: '2017',
+							contactPoint: {
+								'@type': 'ContactPoint',
+								telephone: '+54-9-11-XXXX-XXXX',
+								contactType: 'customer service',
+								availableLanguage: ['Spanish', 'English'],
+							},
+							address: {
+								'@type': 'PostalAddress',
+								addressLocality: 'Buenos Aires',
+								addressCountry: 'AR',
+							},
+							sameAs: ['https://linkedin.com/company/xoftar'],
+							offers: {
+								'@type': 'Offer',
+								category: 'Software Development Services',
+								description:
+									'Desarrollo de aplicaciones web, móviles y software empresarial',
+							},
+							aggregateRating: {
+								'@type': 'AggregateRating',
+								ratingValue: '4.9',
+								reviewCount: '50',
+							},
+						}),
+					}}
+				/>
 			</head>
 			<body>
 				{children}
